@@ -18,7 +18,7 @@ entity SSD_DECODER is
 	port( 
 		CODE : in std_logic_vector(3 downto 0);
 		POINT, SHUTDOWN, TEST: in std_logic := '0';
-		SEGMENT: out std_logic_vector(7 downto 0);
+		SEGMENT: out std_logic_vector(7 downto 0)
 	);
 end entity;
 ---------------------------------------------------------------------------
