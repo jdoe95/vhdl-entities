@@ -14,15 +14,6 @@ end entity;
 ---------------------------------------------------------------------------
 architecture TB_SSD_DECODER_ARC of TB_SSD_DECODER is
 
-	-- unit under test
-	component SSD_DECODER is 
-		port( 
-			CODE : in std_logic_vector(3 downto 0);
-			POINT, SHUTDOWN, TEST: in std_logic := '0';
-			SEGMENT: out std_logic_vector(7 downto 0);
-		);
-	end component;
-	
 	-- signals
 	signal CODE: std_logic_vector(3 downto 0) := (others =>'0');
 	signal POINT, SHUTDOWN, TEST: std_logic := '0';
@@ -32,7 +23,7 @@ architecture TB_SSD_DECODER_ARC of TB_SSD_DECODER is
 	constant PERIOD: time := 200 ns;
 
 begin
-	UUT: component SSD_DECODER
+	UUT: entity work.SSD_DECODER(COMMON_ANODE)
 		port map( 
 			CODE => CODE,
 			POINT => POINT, 

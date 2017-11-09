@@ -13,19 +13,7 @@ end entity;
 
 ---------------------------------------------------------------------------
 architecture TB_CLOCK_DIVIDER_ARC of TB_CLOCK_DIVIDER is
-	
-	-- unit under test
-	component CLOCK_DIVIDER is
-		generic(
-			MAX_COUNTER: positive := 1
-		);
-		
-		port(
-			CLOCK_IN: in std_logic;
-			CLOCK_OUT: out std_logic
-		);
-	end component;
-	
+
 	-- signals
 	signal CLOCK_IN, CLOCK_OUT: std_logic := '0';
 	
@@ -34,9 +22,9 @@ architecture TB_CLOCK_DIVIDER_ARC of TB_CLOCK_DIVIDER is
 	
 begin
 	
-	UUT: component CLOCK_DIVIDER
+	UUT: entity work.CLOCK_DIVIDER
 		generic map(
-			MAX_COUNTER => 2
+			DIV => 2
 		)
 		
 		port map(

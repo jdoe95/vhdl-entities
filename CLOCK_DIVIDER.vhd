@@ -10,7 +10,7 @@ use ieee.std_logic_1164.all;
 ---------------------------------------------------------------------------
 entity CLOCK_DIVIDER is
 	generic(
-		MAX_COUNTER: positive := 1
+		DIV: positive := 1
 	);
 	
 	port(
@@ -30,7 +30,7 @@ begin
 		if rising_edge(CLOCK_IN) then
 			COUNTER := COUNTER + 1;
 			
-			if COUNTER = MAX_COUNTER then
+			if COUNTER = DIV - 1 then
 				COUNTER := 0;
 				
 				CLOCK_OUT_TEMP := not CLOCK_OUT_TEMP;
