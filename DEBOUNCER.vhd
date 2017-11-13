@@ -12,7 +12,7 @@ use ieee.std_logic_1164.all;
 entity DEBOUNCER is 
 	generic( DEBOUNCE_CYCLES: positive := 10 );
 	port( BUTTON, CLOCK: in std_logic;
-			DEBOUNCED: out std_logic := '0');
+			DEBOUNCED: out std_logic);
 end entity;
 ---------------------------------------------------------------------------
 architecture DEBOUNDER_ARC of DEBOUNCER is
@@ -20,10 +20,13 @@ begin
 
 	process( BUTTON, CLOCK )
 		variable COUNTER : integer := 0;
+		variable OLD_BUTTON: std_logic := '0';
 	begin
 	
-		if( BUTTON'event ) then
+		if OLD_BUTTON /= BUTTON then
+			OLD_BUTTON := BUTTON;
 			COUNTER := 0;
+			
 		else
 			
 			if rising_edge(CLOCK) then
