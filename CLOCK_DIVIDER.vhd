@@ -30,7 +30,7 @@ begin
 		if rising_edge(CLOCK_IN) then
 			COUNTER := COUNTER + 1;
 			
-			if COUNTER = DIV - 1 then
+			if COUNTER = DIV then
 				COUNTER := 0;
 				
 				CLOCK_OUT_TEMP := not CLOCK_OUT_TEMP;
